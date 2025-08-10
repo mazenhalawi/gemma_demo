@@ -58,7 +58,7 @@ class ModelSelectionScreen extends StatelessWidget {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => BlocProvider(
-                      create: (_) => ChatBloc(selectedModel: model),
+                      create: (_) => getIt.get<ChatBloc>(param1: model),
                       child: ChatScreen(),
                     ),
                   ),

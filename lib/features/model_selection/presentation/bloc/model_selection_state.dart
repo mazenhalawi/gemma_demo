@@ -43,4 +43,10 @@ class ModelSelectionState with _$ModelSelectionState {
     required ModelSelectionData data,
     @Default(true) bool isListenerState,
   }) = ModelSelectionStateOpenChat;
+
+  const factory ModelSelectionState.didSelectAiModel({
+    required AiModel model,
+    required ModelSelectionData data,
+    @Default(true) bool isListenerState,
+  }) = ModelSelectionStateDidSelectAiModel;
 }

@@ -1,5 +1,6 @@
 import 'package:gemma_demo/core/enums/ai_model.dart';
 import 'package:gemma_demo/core/services/file_manager.dart';
+import 'package:gemma_demo/features/chat/domain/chat_usecases.dart';
 import 'package:gemma_demo/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:gemma_demo/features/model_selection/data/model_selection_local_datasource.dart';
 import 'package:gemma_demo/features/model_selection/data/model_selection_local_datasource_impl.dart';
@@ -26,6 +27,9 @@ void setupGetIt() {
   //Use Cases
   getIt.registerLazySingleton(() => GetAiModelsUseCase(getIt()));
   getIt.registerLazySingleton(() => GetDownloadedModelsUseCase(getIt()));
+  getIt.registerLazySingleton(
+    () => CreateChatAiModelUsecase(fileManager: getIt()),
+  );
 
   //Blocs
   getIt.registerFactory(
@@ -35,7 +39,7 @@ void setupGetIt() {
     ),
   );
   getIt.registerFactoryParam<ChatBloc, AiModel, void>(
-    (p1, p2) => ChatBloc(selectedModel: p1),
+    (p1, p2) => ChatBloc(selectedModel: p1, createChatAiModelUsecase: getIt()),
   );
 
   //Services

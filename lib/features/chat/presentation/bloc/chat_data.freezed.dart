@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChatData {
   AiModel get selectedAiModel => throw _privateConstructorUsedError;
+  InferenceModel? get inferenceModel => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,7 @@ abstract class $ChatDataCopyWith<$Res> {
   factory $ChatDataCopyWith(ChatData value, $Res Function(ChatData) then) =
       _$ChatDataCopyWithImpl<$Res, ChatData>;
   @useResult
-  $Res call({AiModel selectedAiModel});
+  $Res call({AiModel selectedAiModel, InferenceModel? inferenceModel});
 }
 
 /// @nodoc
@@ -48,13 +49,20 @@ class _$ChatDataCopyWithImpl<$Res, $Val extends ChatData>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? selectedAiModel = null}) {
+  $Res call({
+    Object? selectedAiModel = null,
+    Object? inferenceModel = freezed,
+  }) {
     return _then(
       _value.copyWith(
             selectedAiModel: null == selectedAiModel
                 ? _value.selectedAiModel
                 : selectedAiModel // ignore: cast_nullable_to_non_nullable
                       as AiModel,
+            inferenceModel: freezed == inferenceModel
+                ? _value.inferenceModel
+                : inferenceModel // ignore: cast_nullable_to_non_nullable
+                      as InferenceModel?,
           )
           as $Val,
     );
@@ -70,7 +78,7 @@ abstract class _$$ChatDataImplCopyWith<$Res>
   ) = __$$ChatDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AiModel selectedAiModel});
+  $Res call({AiModel selectedAiModel, InferenceModel? inferenceModel});
 }
 
 /// @nodoc
@@ -86,13 +94,20 @@ class __$$ChatDataImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? selectedAiModel = null}) {
+  $Res call({
+    Object? selectedAiModel = null,
+    Object? inferenceModel = freezed,
+  }) {
     return _then(
       _$ChatDataImpl(
         selectedAiModel: null == selectedAiModel
             ? _value.selectedAiModel
             : selectedAiModel // ignore: cast_nullable_to_non_nullable
                   as AiModel,
+        inferenceModel: freezed == inferenceModel
+            ? _value.inferenceModel
+            : inferenceModel // ignore: cast_nullable_to_non_nullable
+                  as InferenceModel?,
       ),
     );
   }
@@ -101,14 +116,16 @@ class __$$ChatDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChatDataImpl implements _ChatData {
-  _$ChatDataImpl({required this.selectedAiModel});
+  _$ChatDataImpl({required this.selectedAiModel, this.inferenceModel});
 
   @override
   final AiModel selectedAiModel;
+  @override
+  final InferenceModel? inferenceModel;
 
   @override
   String toString() {
-    return 'ChatData(selectedAiModel: $selectedAiModel)';
+    return 'ChatData(selectedAiModel: $selectedAiModel, inferenceModel: $inferenceModel)';
   }
 
   @override
@@ -117,11 +134,13 @@ class _$ChatDataImpl implements _ChatData {
         (other.runtimeType == runtimeType &&
             other is _$ChatDataImpl &&
             (identical(other.selectedAiModel, selectedAiModel) ||
-                other.selectedAiModel == selectedAiModel));
+                other.selectedAiModel == selectedAiModel) &&
+            (identical(other.inferenceModel, inferenceModel) ||
+                other.inferenceModel == inferenceModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedAiModel);
+  int get hashCode => Object.hash(runtimeType, selectedAiModel, inferenceModel);
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -133,10 +152,15 @@ class _$ChatDataImpl implements _ChatData {
 }
 
 abstract class _ChatData implements ChatData {
-  factory _ChatData({required final AiModel selectedAiModel}) = _$ChatDataImpl;
+  factory _ChatData({
+    required final AiModel selectedAiModel,
+    final InferenceModel? inferenceModel,
+  }) = _$ChatDataImpl;
 
   @override
   AiModel get selectedAiModel;
+  @override
+  InferenceModel? get inferenceModel;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.

@@ -24,12 +24,12 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  void _openModelSelection(BuildContext context) {
+  Future _openModelSelection(BuildContext context) async {
     final modelSelectionBloc = getIt.get<ModelSelectionBloc>();
 
     context.read<ChatBloc>().listenToUpdates(modelSelectionBloc);
 
-    Navigator.of(context).push(
+    await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => BlocProvider(
           create: (_) => modelSelectionBloc,
@@ -37,5 +37,9 @@ class ChatScreen extends StatelessWidget {
         ),
       ),
     );
+
+    if (context.mounted) {
+      context.read<ChatBloc>().stopListeningToUpdates();
+    }
   }
 }
