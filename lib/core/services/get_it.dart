@@ -30,6 +30,7 @@ void setupGetIt() {
   getIt.registerLazySingleton(
     () => CreateChatAiModelUsecase(fileManager: getIt()),
   );
+  getIt.registerLazySingleton(() => PostChatMessageUseCase());
 
   //Blocs
   getIt.registerFactory(
@@ -38,8 +39,13 @@ void setupGetIt() {
       getDownloadedModelsUseCase: getIt(),
     ),
   );
+
   getIt.registerFactoryParam<ChatBloc, AiModel, void>(
-    (p1, p2) => ChatBloc(selectedModel: p1, createChatAiModelUsecase: getIt()),
+    (p1, p2) => ChatBloc(
+      selectedModel: p1,
+      createChatAiModelUsecase: getIt(),
+      postChatMessageUseCase: getIt(),
+    ),
   );
 
   //Services

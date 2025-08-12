@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:flutter_gemma/core/model.dart';
 
 enum AiModel {
   gemma2(
@@ -9,6 +10,7 @@ enum AiModel {
     sizeInMB: '1250',
     isGPU: false,
     supportsImages: false,
+    modelType: ModelType.gemmaIt,
   ),
   gemma3(
     name: 'Gemma 3',
@@ -18,6 +20,7 @@ enum AiModel {
     sizeInMB: '529',
     isGPU: false,
     supportsImages: false,
+    modelType: ModelType.gemmaIt,
   );
 
   final String name;
@@ -26,6 +29,7 @@ enum AiModel {
   final String sizeInMB;
   final bool isGPU;
   final bool supportsImages;
+  final ModelType modelType;
 
   const AiModel({
     required this.name,
@@ -34,6 +38,7 @@ enum AiModel {
     required this.sizeInMB,
     this.isGPU = false,
     this.supportsImages = false,
+    required this.modelType,
   });
 }
 

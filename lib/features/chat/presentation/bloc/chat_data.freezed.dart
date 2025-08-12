@@ -19,6 +19,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatData {
   AiModel get selectedAiModel => throw _privateConstructorUsedError;
   InferenceModel? get inferenceModel => throw _privateConstructorUsedError;
+  InferenceChat? get inferenceChat => throw _privateConstructorUsedError;
+  List<ChatMessageEntity> get messages => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +34,12 @@ abstract class $ChatDataCopyWith<$Res> {
   factory $ChatDataCopyWith(ChatData value, $Res Function(ChatData) then) =
       _$ChatDataCopyWithImpl<$Res, ChatData>;
   @useResult
-  $Res call({AiModel selectedAiModel, InferenceModel? inferenceModel});
+  $Res call({
+    AiModel selectedAiModel,
+    InferenceModel? inferenceModel,
+    InferenceChat? inferenceChat,
+    List<ChatMessageEntity> messages,
+  });
 }
 
 /// @nodoc
@@ -52,6 +59,8 @@ class _$ChatDataCopyWithImpl<$Res, $Val extends ChatData>
   $Res call({
     Object? selectedAiModel = null,
     Object? inferenceModel = freezed,
+    Object? inferenceChat = freezed,
+    Object? messages = null,
   }) {
     return _then(
       _value.copyWith(
@@ -63,6 +72,14 @@ class _$ChatDataCopyWithImpl<$Res, $Val extends ChatData>
                 ? _value.inferenceModel
                 : inferenceModel // ignore: cast_nullable_to_non_nullable
                       as InferenceModel?,
+            inferenceChat: freezed == inferenceChat
+                ? _value.inferenceChat
+                : inferenceChat // ignore: cast_nullable_to_non_nullable
+                      as InferenceChat?,
+            messages: null == messages
+                ? _value.messages
+                : messages // ignore: cast_nullable_to_non_nullable
+                      as List<ChatMessageEntity>,
           )
           as $Val,
     );
@@ -78,7 +95,12 @@ abstract class _$$ChatDataImplCopyWith<$Res>
   ) = __$$ChatDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AiModel selectedAiModel, InferenceModel? inferenceModel});
+  $Res call({
+    AiModel selectedAiModel,
+    InferenceModel? inferenceModel,
+    InferenceChat? inferenceChat,
+    List<ChatMessageEntity> messages,
+  });
 }
 
 /// @nodoc
@@ -97,6 +119,8 @@ class __$$ChatDataImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedAiModel = null,
     Object? inferenceModel = freezed,
+    Object? inferenceChat = freezed,
+    Object? messages = null,
   }) {
     return _then(
       _$ChatDataImpl(
@@ -108,6 +132,14 @@ class __$$ChatDataImplCopyWithImpl<$Res>
             ? _value.inferenceModel
             : inferenceModel // ignore: cast_nullable_to_non_nullable
                   as InferenceModel?,
+        inferenceChat: freezed == inferenceChat
+            ? _value.inferenceChat
+            : inferenceChat // ignore: cast_nullable_to_non_nullable
+                  as InferenceChat?,
+        messages: null == messages
+            ? _value._messages
+            : messages // ignore: cast_nullable_to_non_nullable
+                  as List<ChatMessageEntity>,
       ),
     );
   }
@@ -116,16 +148,31 @@ class __$$ChatDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChatDataImpl implements _ChatData {
-  _$ChatDataImpl({required this.selectedAiModel, this.inferenceModel});
+  _$ChatDataImpl({
+    required this.selectedAiModel,
+    this.inferenceModel,
+    this.inferenceChat,
+    final List<ChatMessageEntity> messages = const [],
+  }) : _messages = messages;
 
   @override
   final AiModel selectedAiModel;
   @override
   final InferenceModel? inferenceModel;
+  @override
+  final InferenceChat? inferenceChat;
+  final List<ChatMessageEntity> _messages;
+  @override
+  @JsonKey()
+  List<ChatMessageEntity> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
 
   @override
   String toString() {
-    return 'ChatData(selectedAiModel: $selectedAiModel, inferenceModel: $inferenceModel)';
+    return 'ChatData(selectedAiModel: $selectedAiModel, inferenceModel: $inferenceModel, inferenceChat: $inferenceChat, messages: $messages)';
   }
 
   @override
@@ -136,11 +183,20 @@ class _$ChatDataImpl implements _ChatData {
             (identical(other.selectedAiModel, selectedAiModel) ||
                 other.selectedAiModel == selectedAiModel) &&
             (identical(other.inferenceModel, inferenceModel) ||
-                other.inferenceModel == inferenceModel));
+                other.inferenceModel == inferenceModel) &&
+            (identical(other.inferenceChat, inferenceChat) ||
+                other.inferenceChat == inferenceChat) &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedAiModel, inferenceModel);
+  int get hashCode => Object.hash(
+    runtimeType,
+    selectedAiModel,
+    inferenceModel,
+    inferenceChat,
+    const DeepCollectionEquality().hash(_messages),
+  );
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -155,12 +211,18 @@ abstract class _ChatData implements ChatData {
   factory _ChatData({
     required final AiModel selectedAiModel,
     final InferenceModel? inferenceModel,
+    final InferenceChat? inferenceChat,
+    final List<ChatMessageEntity> messages,
   }) = _$ChatDataImpl;
 
   @override
   AiModel get selectedAiModel;
   @override
   InferenceModel? get inferenceModel;
+  @override
+  InferenceChat? get inferenceChat;
+  @override
+  List<ChatMessageEntity> get messages;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
