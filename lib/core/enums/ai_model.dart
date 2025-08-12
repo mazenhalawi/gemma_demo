@@ -10,6 +10,7 @@ enum AiModel {
     sizeInMB: '1250',
     isGPU: false,
     supportsImages: false,
+    supportsFunctionCalling: true,
     modelType: ModelType.gemmaIt,
   ),
   gemma3(
@@ -20,6 +21,7 @@ enum AiModel {
     sizeInMB: '529',
     isGPU: false,
     supportsImages: false,
+    supportsFunctionCalling: true,
     modelType: ModelType.gemmaIt,
   );
 
@@ -29,6 +31,7 @@ enum AiModel {
   final String sizeInMB;
   final bool isGPU;
   final bool supportsImages;
+  final bool supportsFunctionCalling;
   final ModelType modelType;
 
   const AiModel({
@@ -38,6 +41,7 @@ enum AiModel {
     required this.sizeInMB,
     this.isGPU = false,
     this.supportsImages = false,
+    this.supportsFunctionCalling = false,
     required this.modelType,
   });
 }

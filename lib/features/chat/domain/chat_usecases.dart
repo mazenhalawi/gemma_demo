@@ -26,9 +26,9 @@ class CreateChatAiModelUsecase {
       return Left(Failure(e.toString()));
     }
 
-    final modelManager = FlutterGemmaPlugin.instance.modelManager;
+    final modelFileManager = FlutterGemmaPlugin.instance.modelManager;
 
-    await modelManager.setModelPath(modelPath);
+    await modelFileManager.setModelPath(modelPath);
 
     final model = await FlutterGemmaPlugin.instance.createModel(
       modelType: aiModel.modelType,
