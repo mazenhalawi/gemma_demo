@@ -1,63 +1,34 @@
 import 'package:dartz/dartz.dart';
 import 'package:gemma_demo/core/enums/ai_model.dart';
+import 'package:gemma_demo/core/models/ai_chat_settings.dart';
 import 'package:gemma_demo/core/models/failure.dart';
-import 'package:gemma_demo/core/services/file_manager.dart';
-import 'package:flutter_gemma/flutter_gemma.dart';
 import 'package:gemma_demo/features/chat/domain/chat_entity.dart';
+import 'package:gemma_demo/features/chat/domain/chat_repository.dart';
 
-class CreateChatAiModelUsecase {
-  final FileManager fileManager;
+class SetupAiModelUsecase {
+  final ChatRepository repository;
 
-  CreateChatAiModelUsecase({required this.fileManager});
+  SetupAiModelUsecase({required this.repository});
 
-  Future<Either<Failure, InferenceModel>> call(AiModel aiModel) async {
-    final docDirectory = (await fileManager.getDocumentDirectory);
-    final modelPath = '${docDirectory.path}/${aiModel.filename}';
-
-    try {
-      if (!(await fileManager.checkFileExists(modelPath))) {
-        return Left(
-          Failure(
-            "Ai model was not downloaded. Please download it before you can use it.",
-          ),
-        );
-      }
-    } catch (e) {
-      return Left(Failure(e.toString()));
-    }
-
-    final modelFileManager = FlutterGemmaPlugin.instance.modelManager;
-
-    await modelFileManager.setModelPath(modelPath);
-
-    final model = await FlutterGemmaPlugin.instance.createModel(
-      modelType: aiModel.modelType,
-      supportImage: false,
+  Future<Either<Failure, Unit>> call({
+    required AiModel aiModel,
+    AiChatSettings? settings,
+  }) async {
+    return repository.setupChatAiModel(
+      aiModel: aiModel,
+      settings: settings ?? AiChatSettings(),
     );
-
-    return Right(model);
   }
 }
 
 class PostChatMessageUseCase {
+  final ChatRepository repository;
+
+  PostChatMessageUseCase({required this.repository});
+
   Future<Either<Failure, ChatMessageEntity>> call({
-    required InferenceChat inferenceChat,
     required ChatMessageEntity chatMessage,
   }) async {
-    final message = Message.text(
-      text: chatMessage.message,
-      isUser: !chatMessage.isAiResponse,
-    );
-
-    await inferenceChat.addQuery(message);
-    final response = await inferenceChat.generateChatResponse();
-    if (response is TextResponse) {
-      return Right(ChatMessageEntity.ai(response.token));
-    } else if (response is FunctionCallResponse) {
-      return Left(Failure('FunctionCallReponse type was not handled'));
-    } else if (response is ThinkingResponse) {
-      return Left(Failure('ThinkingResponse type was not handled'));
-    }
-    return Left(Failure('Unrecognized error has occurred.'));
+    return repository.postMessage(chatMessage);
   }
 }

@@ -1,15 +1,15 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-part 'chat_entity.freezed.dart';
+class ChatMessageEntity {
+  final String id;
+  final String message;
+  final bool isAiResponse;
 
-@freezed
-class ChatMessageEntity with _$ChatMessageEntity {
-  factory ChatMessageEntity({
-    required String id,
-    required String message,
-    required bool isAiResponse,
-  }) = _ChatMessageEntity;
+  const ChatMessageEntity({
+    required this.id,
+    required this.message,
+    required this.isAiResponse,
+  });
 
   factory ChatMessageEntity.user(String message) =>
       ChatMessageEntity(id: Uuid().v1(), message: message, isAiResponse: false);

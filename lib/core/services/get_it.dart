@@ -1,5 +1,10 @@
 import 'package:gemma_demo/core/enums/ai_model.dart';
+import 'package:gemma_demo/core/services/ai_manager.dart';
 import 'package:gemma_demo/core/services/file_manager.dart';
+import 'package:gemma_demo/features/chat/data/chat_ai_datasource.dart';
+import 'package:gemma_demo/features/chat/data/chat_ai_datasource_impl.dart';
+import 'package:gemma_demo/features/chat/data/chat_repository_impl.dart';
+import 'package:gemma_demo/features/chat/domain/chat_repository.dart';
 import 'package:gemma_demo/features/chat/domain/chat_usecases.dart';
 import 'package:gemma_demo/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:gemma_demo/features/model_selection/data/model_selection_local_datasource.dart';
@@ -18,19 +23,23 @@ void setupGetIt() {
   getIt.registerLazySingleton<ModelSelectionRepository>(
     () => ModelSelectionRepositoryImpl(dataSource: getIt()),
   );
+  getIt.registerLazySingleton<ChatRepository>(
+    () => ChatRepositoryImpl(aiDatasource: getIt()),
+  );
 
   //Data Sources
   getIt.registerLazySingleton<ModelSelectionLocalDatasource>(
     () => ModelSelectionLocalDatasourceImpl(),
   );
+  getIt.registerLazySingleton<ChatAiDatasource>(() => ChatAiDatasourceImpl());
 
   //Use Cases
   getIt.registerLazySingleton(() => GetAiModelsUseCase(getIt()));
   getIt.registerLazySingleton(() => GetDownloadedModelsUseCase(getIt()));
+  getIt.registerLazySingleton(() => SetupAiModelUsecase(repository: getIt()));
   getIt.registerLazySingleton(
-    () => CreateChatAiModelUsecase(fileManager: getIt()),
+    () => PostChatMessageUseCase(repository: getIt()),
   );
-  getIt.registerLazySingleton(() => PostChatMessageUseCase());
 
   //Blocs
   getIt.registerFactory(
@@ -43,11 +52,12 @@ void setupGetIt() {
   getIt.registerFactoryParam<ChatBloc, AiModel, void>(
     (p1, p2) => ChatBloc(
       selectedModel: p1,
-      createChatAiModelUsecase: getIt(),
+      setupChatAiModelUsecase: getIt(),
       postChatMessageUseCase: getIt(),
     ),
   );
 
   //Services
   getIt.registerLazySingleton<FileManager>(() => FileManager.instance);
+  getIt.registerLazySingleton<AiManager>(() => AiManager.instance);
 }

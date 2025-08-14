@@ -15,14 +15,14 @@ part 'chat_state.dart';
 part 'chat_bloc.freezed.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  final CreateChatAiModelUsecase createChatAiModelUsecase;
+  final SetupAiModelUsecase setupChatAiModelUsecase;
   final PostChatMessageUseCase postChatMessageUseCase;
 
   StreamSubscription? _subscription;
 
   ChatBloc({
     required AiModel selectedModel,
-    required this.createChatAiModelUsecase,
+    required this.setupChatAiModelUsecase,
     required this.postChatMessageUseCase,
   }) : super(
          ChatState.initial(data: ChatData(selectedAiModel: selectedModel)),
@@ -31,7 +31,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       await event.when(
         setupAiModel: (_) =>
             _mapSetupAiMmodelEventToState(event as ChatEventSetupAiModel, emit),
-        createChat: () => _mapCreateChatEventToState(event, emit),
         postMessage: (_) =>
             _mapPostMessageEventToState(event as ChatEventPostMessage, emit),
       );
@@ -55,7 +54,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   void stopListeningToUpdates() {
-    state.data.inferenceModel?.close();
     _subscription?.cancel();
     _subscription = null;
   }
@@ -68,25 +66,6 @@ extension MapEventToState on ChatBloc {
   ) async {
     final userMessage = ChatMessageEntity.user(event.message);
 
-    if (state.data.inferenceChat == null) {
-      emit(
-        ChatState.displayAlert(
-          title: 'Initialization Failure',
-          message: "Chat model was not initialized.",
-          data: state.data,
-        ),
-      );
-      emit(
-        ChatState.loadSuccess(
-          data: state.data.copyWith(
-            messages: [...state.data.messages, userMessage],
-          ),
-        ),
-      );
-      add(ChatEvent.createChat());
-      return;
-    }
-
     emit(
       ChatState.loading(
         data: state.data.copyWith(
@@ -96,7 +75,6 @@ extension MapEventToState on ChatBloc {
     );
 
     final response = await postChatMessageUseCase.call(
-      inferenceChat: state.data.inferenceChat!,
       chatMessage: ChatMessageEntity.user(event.message),
     );
 
@@ -118,32 +96,15 @@ extension MapEventToState on ChatBloc {
     );
   }
 
-  Future _mapCreateChatEventToState(ChatEvent event, Emitter emit) async {
-    final inferenceModel = state.data.inferenceModel;
-
-    if (inferenceModel != null) {
-      emit(ChatState.loading(data: state.data));
-
-      final inferenceChat = await inferenceModel.createChat(
-        modelType: state.data.selectedAiModel.modelType,
-      );
-
-      emit(
-        ChatState.loadSuccess(
-          data: state.data.copyWith(inferenceChat: inferenceChat),
-        ),
-      );
-    }
-  }
-
   Future<void> _mapSetupAiMmodelEventToState(
     ChatEventSetupAiModel event,
     Emitter<ChatState> emit,
   ) async {
     emit(ChatState.loading(data: state.data));
 
-    final result = await createChatAiModelUsecase.call(
-      state.data.selectedAiModel,
+    final result = await setupChatAiModelUsecase.call(
+      aiModel: state.data.selectedAiModel,
+      settings: state.data.aiChatSettings,
     );
 
     result.fold(
@@ -156,14 +117,8 @@ extension MapEventToState on ChatBloc {
           ),
         );
       },
-      (inferenceModel) {
-        emit(
-          ChatState.loadSuccess(
-            data: state.data.copyWith(inferenceModel: inferenceModel),
-          ),
-        );
-
-        add(ChatEvent.createChat());
+      (_) {
+        emit(ChatState.loadSuccess(data: state.data));
       },
     );
   }
