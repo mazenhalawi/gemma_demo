@@ -742,6 +742,12 @@ mixin _$ModelSelectionState {
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -776,6 +782,12 @@ mixin _$ModelSelectionState {
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -810,6 +822,12 @@ mixin _$ModelSelectionState {
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -823,6 +841,8 @@ mixin _$ModelSelectionState {
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -834,6 +854,8 @@ mixin _$ModelSelectionState {
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -845,6 +867,8 @@ mixin _$ModelSelectionState {
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 
@@ -1035,6 +1059,12 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return initial(data, isListenerState);
   }
@@ -1073,6 +1103,12 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return initial?.call(data, isListenerState);
   }
@@ -1111,6 +1147,12 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1131,6 +1173,8 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return initial(this);
   }
@@ -1146,6 +1190,8 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return initial?.call(this);
   }
@@ -1161,6 +1207,8 @@ class _$ModelSelectionStateInitialImpl implements ModelSelectionStateInitial {
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1316,6 +1364,12 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return loading(data, isListenerState);
   }
@@ -1354,6 +1408,12 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return loading?.call(data, isListenerState);
   }
@@ -1392,6 +1452,12 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1412,6 +1478,8 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return loading(this);
   }
@@ -1427,6 +1495,8 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return loading?.call(this);
   }
@@ -1442,6 +1512,8 @@ class _$ModelSelectionStateLoadingImpl implements ModelSelectionStateLoading {
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1639,6 +1711,12 @@ class _$ModelSelectionStateLoadFailureImpl
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return loadFailure(failure, retryEvent, data, isListenerState);
   }
@@ -1677,6 +1755,12 @@ class _$ModelSelectionStateLoadFailureImpl
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return loadFailure?.call(failure, retryEvent, data, isListenerState);
   }
@@ -1715,6 +1799,12 @@ class _$ModelSelectionStateLoadFailureImpl
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1735,6 +1825,8 @@ class _$ModelSelectionStateLoadFailureImpl
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return loadFailure(this);
   }
@@ -1750,6 +1842,8 @@ class _$ModelSelectionStateLoadFailureImpl
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return loadFailure?.call(this);
   }
@@ -1765,6 +1859,8 @@ class _$ModelSelectionStateLoadFailureImpl
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1929,6 +2025,12 @@ class _$ModelSelectionStateLoadSuccessImpl
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return loadSuccess(data, isListenerState);
   }
@@ -1967,6 +2069,12 @@ class _$ModelSelectionStateLoadSuccessImpl
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return loadSuccess?.call(data, isListenerState);
   }
@@ -2005,6 +2113,12 @@ class _$ModelSelectionStateLoadSuccessImpl
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -2025,6 +2139,8 @@ class _$ModelSelectionStateLoadSuccessImpl
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return loadSuccess(this);
   }
@@ -2040,6 +2156,8 @@ class _$ModelSelectionStateLoadSuccessImpl
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return loadSuccess?.call(this);
   }
@@ -2055,6 +2173,8 @@ class _$ModelSelectionStateLoadSuccessImpl
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -2260,6 +2380,12 @@ class _$ModelSelectionStateDisplayAlertImpl
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return displayAlert(title, message, data, shouldPopOut, isListenerState);
   }
@@ -2298,6 +2424,12 @@ class _$ModelSelectionStateDisplayAlertImpl
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return displayAlert?.call(
       title,
@@ -2342,6 +2474,12 @@ class _$ModelSelectionStateDisplayAlertImpl
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (displayAlert != null) {
@@ -2362,6 +2500,8 @@ class _$ModelSelectionStateDisplayAlertImpl
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return displayAlert(this);
   }
@@ -2377,6 +2517,8 @@ class _$ModelSelectionStateDisplayAlertImpl
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return displayAlert?.call(this);
   }
@@ -2392,6 +2534,8 @@ class _$ModelSelectionStateDisplayAlertImpl
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (displayAlert != null) {
@@ -2570,6 +2714,12 @@ class _$ModelSelectionStatePromptModelDownloadImpl
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return promptModelDownload(model, data, isListenerState);
   }
@@ -2608,6 +2758,12 @@ class _$ModelSelectionStatePromptModelDownloadImpl
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return promptModelDownload?.call(model, data, isListenerState);
   }
@@ -2646,6 +2802,12 @@ class _$ModelSelectionStatePromptModelDownloadImpl
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (promptModelDownload != null) {
@@ -2666,6 +2828,8 @@ class _$ModelSelectionStatePromptModelDownloadImpl
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return promptModelDownload(this);
   }
@@ -2681,6 +2845,8 @@ class _$ModelSelectionStatePromptModelDownloadImpl
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return promptModelDownload?.call(this);
   }
@@ -2696,6 +2862,8 @@ class _$ModelSelectionStatePromptModelDownloadImpl
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (promptModelDownload != null) {
@@ -2868,6 +3036,12 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
       bool isListenerState,
     )
     openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
   }) {
     return openChat(model, data, isListenerState);
   }
@@ -2906,6 +3080,12 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
       bool isListenerState,
     )?
     openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
   }) {
     return openChat?.call(model, data, isListenerState);
   }
@@ -2944,6 +3124,12 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
       bool isListenerState,
     )?
     openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (openChat != null) {
@@ -2964,6 +3150,8 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
     required TResult Function(ModelSelectionStatePromptModelDownload value)
     promptModelDownload,
     required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
   }) {
     return openChat(this);
   }
@@ -2979,6 +3167,8 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
     TResult? Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
   }) {
     return openChat?.call(this);
   }
@@ -2994,6 +3184,8 @@ class _$ModelSelectionStateOpenChatImpl implements ModelSelectionStateOpenChat {
     TResult Function(ModelSelectionStatePromptModelDownload value)?
     promptModelDownload,
     TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
     required TResult orElse(),
   }) {
     if (openChat != null) {
@@ -3021,5 +3213,330 @@ abstract class ModelSelectionStateOpenChat implements ModelSelectionState {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ModelSelectionStateOpenChatImplCopyWith<_$ModelSelectionStateOpenChatImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ModelSelectionStateDidSelectAiModelImplCopyWith<$Res>
+    implements $ModelSelectionStateCopyWith<$Res> {
+  factory _$$ModelSelectionStateDidSelectAiModelImplCopyWith(
+    _$ModelSelectionStateDidSelectAiModelImpl value,
+    $Res Function(_$ModelSelectionStateDidSelectAiModelImpl) then,
+  ) = __$$ModelSelectionStateDidSelectAiModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AiModel model, ModelSelectionData data, bool isListenerState});
+
+  @override
+  $ModelSelectionDataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$ModelSelectionStateDidSelectAiModelImplCopyWithImpl<$Res>
+    extends
+        _$ModelSelectionStateCopyWithImpl<
+          $Res,
+          _$ModelSelectionStateDidSelectAiModelImpl
+        >
+    implements _$$ModelSelectionStateDidSelectAiModelImplCopyWith<$Res> {
+  __$$ModelSelectionStateDidSelectAiModelImplCopyWithImpl(
+    _$ModelSelectionStateDidSelectAiModelImpl _value,
+    $Res Function(_$ModelSelectionStateDidSelectAiModelImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ModelSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+    Object? data = null,
+    Object? isListenerState = null,
+  }) {
+    return _then(
+      _$ModelSelectionStateDidSelectAiModelImpl(
+        model: null == model
+            ? _value.model
+            : model // ignore: cast_nullable_to_non_nullable
+                  as AiModel,
+        data: null == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as ModelSelectionData,
+        isListenerState: null == isListenerState
+            ? _value.isListenerState
+            : isListenerState // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ModelSelectionStateDidSelectAiModelImpl
+    implements ModelSelectionStateDidSelectAiModel {
+  const _$ModelSelectionStateDidSelectAiModelImpl({
+    required this.model,
+    required this.data,
+    this.isListenerState = true,
+  });
+
+  @override
+  final AiModel model;
+  @override
+  final ModelSelectionData data;
+  @override
+  @JsonKey()
+  final bool isListenerState;
+
+  @override
+  String toString() {
+    return 'ModelSelectionState.didSelectAiModel(model: $model, data: $data, isListenerState: $isListenerState)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ModelSelectionStateDidSelectAiModelImpl &&
+            (identical(other.model, model) || other.model == model) &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.isListenerState, isListenerState) ||
+                other.isListenerState == isListenerState));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, model, data, isListenerState);
+
+  /// Create a copy of ModelSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ModelSelectionStateDidSelectAiModelImplCopyWith<
+    _$ModelSelectionStateDidSelectAiModelImpl
+  >
+  get copyWith =>
+      __$$ModelSelectionStateDidSelectAiModelImplCopyWithImpl<
+        _$ModelSelectionStateDidSelectAiModelImpl
+      >(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ModelSelectionData data, bool isListenerState)
+    initial,
+    required TResult Function(ModelSelectionData data, bool isListenerState)
+    loading,
+    required TResult Function(
+      Failure failure,
+      ModelSelectionEvent retryEvent,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    loadFailure,
+    required TResult Function(ModelSelectionData data, bool isListenerState)
+    loadSuccess,
+    required TResult Function(
+      String title,
+      String message,
+      ModelSelectionData data,
+      bool shouldPopOut,
+      bool isListenerState,
+    )
+    displayAlert,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    promptModelDownload,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    openChat,
+    required TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )
+    didSelectAiModel,
+  }) {
+    return didSelectAiModel(model, data, isListenerState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ModelSelectionData data, bool isListenerState)? initial,
+    TResult? Function(ModelSelectionData data, bool isListenerState)? loading,
+    TResult? Function(
+      Failure failure,
+      ModelSelectionEvent retryEvent,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    loadFailure,
+    TResult? Function(ModelSelectionData data, bool isListenerState)?
+    loadSuccess,
+    TResult? Function(
+      String title,
+      String message,
+      ModelSelectionData data,
+      bool shouldPopOut,
+      bool isListenerState,
+    )?
+    displayAlert,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    promptModelDownload,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    openChat,
+    TResult? Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
+  }) {
+    return didSelectAiModel?.call(model, data, isListenerState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ModelSelectionData data, bool isListenerState)? initial,
+    TResult Function(ModelSelectionData data, bool isListenerState)? loading,
+    TResult Function(
+      Failure failure,
+      ModelSelectionEvent retryEvent,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    loadFailure,
+    TResult Function(ModelSelectionData data, bool isListenerState)?
+    loadSuccess,
+    TResult Function(
+      String title,
+      String message,
+      ModelSelectionData data,
+      bool shouldPopOut,
+      bool isListenerState,
+    )?
+    displayAlert,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    promptModelDownload,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    openChat,
+    TResult Function(
+      AiModel model,
+      ModelSelectionData data,
+      bool isListenerState,
+    )?
+    didSelectAiModel,
+    required TResult orElse(),
+  }) {
+    if (didSelectAiModel != null) {
+      return didSelectAiModel(model, data, isListenerState);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ModelSelectionStateInitial value) initial,
+    required TResult Function(ModelSelectionStateLoading value) loading,
+    required TResult Function(ModelSelectionStateLoadFailure value) loadFailure,
+    required TResult Function(ModelSelectionStateLoadSuccess value) loadSuccess,
+    required TResult Function(ModelSelectionStateDisplayAlert value)
+    displayAlert,
+    required TResult Function(ModelSelectionStatePromptModelDownload value)
+    promptModelDownload,
+    required TResult Function(ModelSelectionStateOpenChat value) openChat,
+    required TResult Function(ModelSelectionStateDidSelectAiModel value)
+    didSelectAiModel,
+  }) {
+    return didSelectAiModel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ModelSelectionStateInitial value)? initial,
+    TResult? Function(ModelSelectionStateLoading value)? loading,
+    TResult? Function(ModelSelectionStateLoadFailure value)? loadFailure,
+    TResult? Function(ModelSelectionStateLoadSuccess value)? loadSuccess,
+    TResult? Function(ModelSelectionStateDisplayAlert value)? displayAlert,
+    TResult? Function(ModelSelectionStatePromptModelDownload value)?
+    promptModelDownload,
+    TResult? Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult? Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
+  }) {
+    return didSelectAiModel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ModelSelectionStateInitial value)? initial,
+    TResult Function(ModelSelectionStateLoading value)? loading,
+    TResult Function(ModelSelectionStateLoadFailure value)? loadFailure,
+    TResult Function(ModelSelectionStateLoadSuccess value)? loadSuccess,
+    TResult Function(ModelSelectionStateDisplayAlert value)? displayAlert,
+    TResult Function(ModelSelectionStatePromptModelDownload value)?
+    promptModelDownload,
+    TResult Function(ModelSelectionStateOpenChat value)? openChat,
+    TResult Function(ModelSelectionStateDidSelectAiModel value)?
+    didSelectAiModel,
+    required TResult orElse(),
+  }) {
+    if (didSelectAiModel != null) {
+      return didSelectAiModel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ModelSelectionStateDidSelectAiModel
+    implements ModelSelectionState {
+  const factory ModelSelectionStateDidSelectAiModel({
+    required final AiModel model,
+    required final ModelSelectionData data,
+    final bool isListenerState,
+  }) = _$ModelSelectionStateDidSelectAiModelImpl;
+
+  AiModel get model;
+  @override
+  ModelSelectionData get data;
+  @override
+  bool get isListenerState;
+
+  /// Create a copy of ModelSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ModelSelectionStateDidSelectAiModelImplCopyWith<
+    _$ModelSelectionStateDidSelectAiModelImpl
+  >
   get copyWith => throw _privateConstructorUsedError;
 }

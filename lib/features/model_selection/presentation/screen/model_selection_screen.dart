@@ -54,15 +54,20 @@ class ModelSelectionScreen extends StatelessWidget {
                     );
                   }
                 }),
-            openChat: (model, data, isListenerState) =>
+            openChat: (model, data, isListenerState) {
+              if (Navigator.of(context).canPop()) {
+                Navigator.of(context).pop();
+              } else {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => BlocProvider(
-                      create: (_) => ChatBloc(selectedModel: model),
+                      create: (_) => getIt.get<ChatBloc>(param1: model),
                       child: ChatScreen(),
                     ),
                   ),
-                ),
+                );
+              }
+            },
             orElse: () => throw UnimplementedError(
               '$state was not implemented in the listener of $this',
             ),
@@ -142,18 +147,6 @@ extension StateWidgets on ModelSelectionScreen {
                   context.read<ModelSelectionBloc>().add(
                     ModelSelectionEvent.selectAiModel(model),
                   );
-                  if (Navigator.of(context).canPop()) {
-                    Navigator.of(context).pop();
-                  } else {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (_) => getIt.get<ChatBloc>(param1: model),
-                          child: ChatScreen(),
-                        ),
-                      ),
-                    );
-                  }
                 } else {
                   //download model
                   context.read<ModelSelectionBloc>().add(

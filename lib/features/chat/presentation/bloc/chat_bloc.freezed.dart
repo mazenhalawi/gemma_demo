@@ -19,28 +19,34 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function(AiModel model) setupAiModel,
+    required TResult Function(String message) postMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function(AiModel model)? setupAiModel,
+    TResult? Function(String message)? postMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(AiModel model)? setupAiModel,
+    TResult Function(String message)? postMessage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(ChatEventSetupAiModel value) setupAiModel,
+    required TResult Function(ChatEventPostMessage value) postMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult? Function(ChatEventPostMessage value)? postMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult Function(ChatEventPostMessage value)? postMessage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -66,65 +72,103 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-    _$StartedImpl value,
-    $Res Function(_$StartedImpl) then,
-  ) = __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$ChatEventSetupAiModelImplCopyWith<$Res> {
+  factory _$$ChatEventSetupAiModelImplCopyWith(
+    _$ChatEventSetupAiModelImpl value,
+    $Res Function(_$ChatEventSetupAiModelImpl) then,
+  ) = __$$ChatEventSetupAiModelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AiModel model});
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-    _$StartedImpl _value,
-    $Res Function(_$StartedImpl) _then,
+class __$$ChatEventSetupAiModelImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$ChatEventSetupAiModelImpl>
+    implements _$$ChatEventSetupAiModelImplCopyWith<$Res> {
+  __$$ChatEventSetupAiModelImplCopyWithImpl(
+    _$ChatEventSetupAiModelImpl _value,
+    $Res Function(_$ChatEventSetupAiModelImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of ChatEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? model = null}) {
+    return _then(
+      _$ChatEventSetupAiModelImpl(
+        null == model
+            ? _value.model
+            : model // ignore: cast_nullable_to_non_nullable
+                  as AiModel,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$ChatEventSetupAiModelImpl implements ChatEventSetupAiModel {
+  const _$ChatEventSetupAiModelImpl(this.model);
+
+  @override
+  final AiModel model;
 
   @override
   String toString() {
-    return 'ChatEvent.started()';
+    return 'ChatEvent.setupAiModel(model: $model)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ChatEventSetupAiModelImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, model);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatEventSetupAiModelImplCopyWith<_$ChatEventSetupAiModelImpl>
+  get copyWith =>
+      __$$ChatEventSetupAiModelImplCopyWithImpl<_$ChatEventSetupAiModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({required TResult Function() started}) {
-    return started();
+  TResult when<TResult extends Object?>({
+    required TResult Function(AiModel model) setupAiModel,
+    required TResult Function(String message) postMessage,
+  }) {
+    return setupAiModel(model);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({TResult? Function()? started}) {
-    return started?.call();
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AiModel model)? setupAiModel,
+    TResult? Function(String message)? postMessage,
+  }) {
+    return setupAiModel?.call(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function(AiModel model)? setupAiModel,
+    TResult Function(String message)? postMessage,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (setupAiModel != null) {
+      return setupAiModel(model);
     }
     return orElse();
   }
@@ -132,34 +176,193 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(ChatEventSetupAiModel value) setupAiModel,
+    required TResult Function(ChatEventPostMessage value) postMessage,
   }) {
-    return started(this);
+    return setupAiModel(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult? Function(ChatEventPostMessage value)? postMessage,
   }) {
-    return started?.call(this);
+    return setupAiModel?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult Function(ChatEventPostMessage value)? postMessage,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (setupAiModel != null) {
+      return setupAiModel(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ChatEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class ChatEventSetupAiModel implements ChatEvent {
+  const factory ChatEventSetupAiModel(final AiModel model) =
+      _$ChatEventSetupAiModelImpl;
+
+  AiModel get model;
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatEventSetupAiModelImplCopyWith<_$ChatEventSetupAiModelImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChatEventPostMessageImplCopyWith<$Res> {
+  factory _$$ChatEventPostMessageImplCopyWith(
+    _$ChatEventPostMessageImpl value,
+    $Res Function(_$ChatEventPostMessageImpl) then,
+  ) = __$$ChatEventPostMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ChatEventPostMessageImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$ChatEventPostMessageImpl>
+    implements _$$ChatEventPostMessageImplCopyWith<$Res> {
+  __$$ChatEventPostMessageImplCopyWithImpl(
+    _$ChatEventPostMessageImpl _value,
+    $Res Function(_$ChatEventPostMessageImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$ChatEventPostMessageImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$ChatEventPostMessageImpl implements ChatEventPostMessage {
+  const _$ChatEventPostMessageImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ChatEvent.postMessage(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChatEventPostMessageImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChatEventPostMessageImplCopyWith<_$ChatEventPostMessageImpl>
+  get copyWith =>
+      __$$ChatEventPostMessageImplCopyWithImpl<_$ChatEventPostMessageImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AiModel model) setupAiModel,
+    required TResult Function(String message) postMessage,
+  }) {
+    return postMessage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AiModel model)? setupAiModel,
+    TResult? Function(String message)? postMessage,
+  }) {
+    return postMessage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AiModel model)? setupAiModel,
+    TResult Function(String message)? postMessage,
+    required TResult orElse(),
+  }) {
+    if (postMessage != null) {
+      return postMessage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChatEventSetupAiModel value) setupAiModel,
+    required TResult Function(ChatEventPostMessage value) postMessage,
+  }) {
+    return postMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult? Function(ChatEventPostMessage value)? postMessage,
+  }) {
+    return postMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChatEventSetupAiModel value)? setupAiModel,
+    TResult Function(ChatEventPostMessage value)? postMessage,
+    required TResult orElse(),
+  }) {
+    if (postMessage != null) {
+      return postMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChatEventPostMessage implements ChatEvent {
+  const factory ChatEventPostMessage(final String message) =
+      _$ChatEventPostMessageImpl;
+
+  String get message;
+
+  /// Create a copy of ChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChatEventPostMessageImplCopyWith<_$ChatEventPostMessageImpl>
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

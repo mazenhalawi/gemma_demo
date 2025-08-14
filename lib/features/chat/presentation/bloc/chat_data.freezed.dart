@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChatData {
   AiModel get selectedAiModel => throw _privateConstructorUsedError;
+  List<ChatMessageEntity> get messages => throw _privateConstructorUsedError;
+  AiChatSettings? get aiChatSettings => throw _privateConstructorUsedError;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +33,13 @@ abstract class $ChatDataCopyWith<$Res> {
   factory $ChatDataCopyWith(ChatData value, $Res Function(ChatData) then) =
       _$ChatDataCopyWithImpl<$Res, ChatData>;
   @useResult
-  $Res call({AiModel selectedAiModel});
+  $Res call({
+    AiModel selectedAiModel,
+    List<ChatMessageEntity> messages,
+    AiChatSettings? aiChatSettings,
+  });
+
+  $AiChatSettingsCopyWith<$Res>? get aiChatSettings;
 }
 
 /// @nodoc
@@ -48,16 +56,42 @@ class _$ChatDataCopyWithImpl<$Res, $Val extends ChatData>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? selectedAiModel = null}) {
+  $Res call({
+    Object? selectedAiModel = null,
+    Object? messages = null,
+    Object? aiChatSettings = freezed,
+  }) {
     return _then(
       _value.copyWith(
             selectedAiModel: null == selectedAiModel
                 ? _value.selectedAiModel
                 : selectedAiModel // ignore: cast_nullable_to_non_nullable
                       as AiModel,
+            messages: null == messages
+                ? _value.messages
+                : messages // ignore: cast_nullable_to_non_nullable
+                      as List<ChatMessageEntity>,
+            aiChatSettings: freezed == aiChatSettings
+                ? _value.aiChatSettings
+                : aiChatSettings // ignore: cast_nullable_to_non_nullable
+                      as AiChatSettings?,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of ChatData
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AiChatSettingsCopyWith<$Res>? get aiChatSettings {
+    if (_value.aiChatSettings == null) {
+      return null;
+    }
+
+    return $AiChatSettingsCopyWith<$Res>(_value.aiChatSettings!, (value) {
+      return _then(_value.copyWith(aiChatSettings: value) as $Val);
+    });
   }
 }
 
@@ -70,7 +104,14 @@ abstract class _$$ChatDataImplCopyWith<$Res>
   ) = __$$ChatDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AiModel selectedAiModel});
+  $Res call({
+    AiModel selectedAiModel,
+    List<ChatMessageEntity> messages,
+    AiChatSettings? aiChatSettings,
+  });
+
+  @override
+  $AiChatSettingsCopyWith<$Res>? get aiChatSettings;
 }
 
 /// @nodoc
@@ -86,13 +127,25 @@ class __$$ChatDataImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? selectedAiModel = null}) {
+  $Res call({
+    Object? selectedAiModel = null,
+    Object? messages = null,
+    Object? aiChatSettings = freezed,
+  }) {
     return _then(
       _$ChatDataImpl(
         selectedAiModel: null == selectedAiModel
             ? _value.selectedAiModel
             : selectedAiModel // ignore: cast_nullable_to_non_nullable
                   as AiModel,
+        messages: null == messages
+            ? _value._messages
+            : messages // ignore: cast_nullable_to_non_nullable
+                  as List<ChatMessageEntity>,
+        aiChatSettings: freezed == aiChatSettings
+            ? _value.aiChatSettings
+            : aiChatSettings // ignore: cast_nullable_to_non_nullable
+                  as AiChatSettings?,
       ),
     );
   }
@@ -101,14 +154,29 @@ class __$$ChatDataImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChatDataImpl implements _ChatData {
-  _$ChatDataImpl({required this.selectedAiModel});
+  _$ChatDataImpl({
+    required this.selectedAiModel,
+    final List<ChatMessageEntity> messages = const [],
+    this.aiChatSettings,
+  }) : _messages = messages;
 
   @override
   final AiModel selectedAiModel;
+  final List<ChatMessageEntity> _messages;
+  @override
+  @JsonKey()
+  List<ChatMessageEntity> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  final AiChatSettings? aiChatSettings;
 
   @override
   String toString() {
-    return 'ChatData(selectedAiModel: $selectedAiModel)';
+    return 'ChatData(selectedAiModel: $selectedAiModel, messages: $messages, aiChatSettings: $aiChatSettings)';
   }
 
   @override
@@ -117,11 +185,19 @@ class _$ChatDataImpl implements _ChatData {
         (other.runtimeType == runtimeType &&
             other is _$ChatDataImpl &&
             (identical(other.selectedAiModel, selectedAiModel) ||
-                other.selectedAiModel == selectedAiModel));
+                other.selectedAiModel == selectedAiModel) &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
+            (identical(other.aiChatSettings, aiChatSettings) ||
+                other.aiChatSettings == aiChatSettings));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedAiModel);
+  int get hashCode => Object.hash(
+    runtimeType,
+    selectedAiModel,
+    const DeepCollectionEquality().hash(_messages),
+    aiChatSettings,
+  );
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.
@@ -133,10 +209,18 @@ class _$ChatDataImpl implements _ChatData {
 }
 
 abstract class _ChatData implements ChatData {
-  factory _ChatData({required final AiModel selectedAiModel}) = _$ChatDataImpl;
+  factory _ChatData({
+    required final AiModel selectedAiModel,
+    final List<ChatMessageEntity> messages,
+    final AiChatSettings? aiChatSettings,
+  }) = _$ChatDataImpl;
 
   @override
   AiModel get selectedAiModel;
+  @override
+  List<ChatMessageEntity> get messages;
+  @override
+  AiChatSettings? get aiChatSettings;
 
   /// Create a copy of ChatData
   /// with the given fields replaced by the non-null parameter values.

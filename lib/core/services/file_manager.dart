@@ -11,6 +11,15 @@ class FileManager {
 
   FileManager._();
 
+  Future<Directory> get getDocumentDirectory =>
+      getApplicationDocumentsDirectory();
+
+  Future<bool> checkFileExists(String path) async {
+    final file = File(path);
+
+    return await file.exists();
+  }
+
   Future<List<AiModel>> getDownloadedModels() async {
     List<AiModel> downloadedModels = [];
 
