@@ -119,6 +119,12 @@ extension MapEventToState on ModelSelectionBloc {
       );
     } else {
       emit(ModelSelectionState.openChat(model: event.model, data: state.data));
+      emit(
+        ModelSelectionState.didSelectAiModel(
+          model: event.model,
+          data: state.data,
+        ),
+      );
     }
 
     emit(ModelSelectionState.loadSuccess(data: state.data));

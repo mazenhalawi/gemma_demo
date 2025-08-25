@@ -24,6 +24,7 @@ class ModelSelectionScreen extends StatelessWidget {
         buildWhen: (prev, curr) => !curr.isListenerState,
         listener: (context, state) {
           state.maybeWhen(
+            didSelectAiModel: (model, data, isListenerState) => null,
             displayAlert:
                 (title, message, data, shouldPopOut, isListenerState) =>
                     AlertBox(title: title, message: message)
