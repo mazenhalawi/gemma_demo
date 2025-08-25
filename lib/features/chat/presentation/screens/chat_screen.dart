@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gemma_demo/core/enums/ai_model.dart';
 import 'package:gemma_demo/core/models/failure.dart';
 import 'package:gemma_demo/core/services/get_it.dart';
 import 'package:gemma_demo/core/widgets/alert_box.dart';
@@ -29,7 +30,23 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat"),
+        title: Column(
+          children: [
+            Text("Chat"),
+            Builder(
+              builder: (context) {
+                final selectedModel = context.select<ChatBloc, AiModel>(
+                  (ChatBloc bloc) => bloc.state.data.selectedAiModel,
+                );
+                return Text(
+                  selectedModel.name,
+                  style: Theme.of(context).textTheme.bodySmall,
+                );
+              },
+            ),
+          ],
+        ),
+
         actions: [
           IconButton(
             onPressed: () => _openModelSelection(context),

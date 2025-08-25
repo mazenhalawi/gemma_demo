@@ -29,7 +29,9 @@ class ChatRepositoryImpl implements ChatRepository {
     final response = await _aiDatasource.postMessage(msg);
 
     return response.fold((failure) => Left(failure), (msg) {
-      final chatMsgEntity = ChatMessageEntity.ai(msg.text);
+      late ChatMessageEntity chatMsgEntity;
+
+      chatMsgEntity = ChatMessageEntity.ai(msg.text);
       return Right(chatMsgEntity);
     });
   }

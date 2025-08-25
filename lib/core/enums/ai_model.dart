@@ -23,6 +23,17 @@ enum AiModel {
     supportsImages: false,
     supportsFunctionCalling: true,
     modelType: ModelType.gemmaIt,
+  ),
+  gemma3_270(
+    name: 'Gemma 3 270m it',
+    filename: 'gemma3-270m-it-q8.task',
+    link:
+        'https://firebasestorage.googleapis.com/v0/b/siopi-67108.appspot.com/o/gemma3-270m-it-q8.task?alt=media&token=7f549252-96f9-49fa-9f32-b1e2024f7777',
+    sizeInMB: '536',
+    isGPU: false,
+    supportsImages: false,
+    supportsFunctionCalling: true,
+    modelType: ModelType.gemmaIt,
   );
 
   final String name;

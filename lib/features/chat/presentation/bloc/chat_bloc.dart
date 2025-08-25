@@ -103,7 +103,7 @@ extension MapEventToState on ChatBloc {
     emit(ChatState.loading(data: state.data));
 
     final result = await setupChatAiModelUsecase.call(
-      aiModel: state.data.selectedAiModel,
+      aiModel: event.model,
       settings: state.data.aiChatSettings,
     );
 
@@ -118,7 +118,11 @@ extension MapEventToState on ChatBloc {
         );
       },
       (_) {
-        emit(ChatState.loadSuccess(data: state.data));
+        emit(
+          ChatState.loadSuccess(
+            data: state.data.copyWith(selectedAiModel: event.model),
+          ),
+        );
       },
     );
   }
